@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:giftee/Shared/style_standard.dart';
 
-Widget buttonStandard ({@required bool outlined, @required String title, @required Function onPressed}) {
+Widget buttonStandard ({
+  @required bool outlined,
+  @required String title,
+  @required Function onPressed,
+  double height = 50,
+  double width = double.infinity,
+  EdgeInsets margin = const EdgeInsets.all(20),
+  double borderRadius = 15,
+}) {
   return Container(
-    height: 50,
-    width: double.maxFinite,
-    margin: EdgeInsets.all(20),
+    height: height,
+    width: width,
+    margin: margin,
     child: FlatButton(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(borderRadius),
         side: !outlined ? BorderSide.none : BorderSide(
           width: 2.5,
           color: selectedColor(),
         )
       ),
-      color: !outlined ? selectedColor() : Colors.transparent,
+      color: !outlined ? selectedColor() : Color.fromRGBO(255, 255, 255, 1),
       child: Center(
         child: Text(
           title,

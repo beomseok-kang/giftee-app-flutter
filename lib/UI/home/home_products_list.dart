@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:giftee/Pages/Shared_Subpages/product_page.dart';
+import 'package:giftee/Shared/style_standard.dart';
 
 class ProductsList extends StatefulWidget {
 
@@ -33,11 +34,12 @@ class _ProductsListState extends State<ProductsList> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 20,),
-        widget.title,
-        SizedBox(height: 30,),
+        Padding(
+          padding: EdgeInsets.only(left: 20, top: 20, bottom: 20),
+          child: widget.title
+        ),
         SizedBox(
           height: 30,
           child: ListView.builder(
@@ -48,7 +50,8 @@ class _ProductsListState extends State<ProductsList> {
                 color: Colors.transparent,
                 child: Text('Category $index',
                   style: TextStyle(
-                    color: _selectedIndex == index ? Colors.black : Colors.grey,
+                    fontWeight: _selectedIndex == index ? FontWeight.bold : null,
+                    color: _selectedIndex == index ? selectedColor() : unselectedColor(),
                   ),
                 ),
                 onPressed: () {
